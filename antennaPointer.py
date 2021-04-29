@@ -1,8 +1,6 @@
-from navx import AHRS
-import time
+import navx
 
-ahrs = AHRS.create_i2c()
+ahrs = navx.AHRS.create_i2c()
 while(True):
    print(ahrs.getYaw())
-   time.sleep(1)
 
