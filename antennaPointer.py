@@ -1,6 +1,6 @@
 from navx import NAVX
 from time import sleep
-import serial import Serial
+from serial import Serial
 
 imu = NAVX(1);
 
