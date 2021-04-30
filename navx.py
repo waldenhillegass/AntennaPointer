@@ -43,5 +43,5 @@ class NAVX:
       return number / 100
 
    def __str__(self):
-      sting = f'status: {self.getStatus()}\n Yaw: {self.getYaw()}\n Pitch: {self.getPitch()}'
+      sting = f'status: {self.getStatus()}\nYaw: {self.getYaw()}\nPitch: {self.getPitch()}'
       return sting
