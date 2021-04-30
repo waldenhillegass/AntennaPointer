@@ -14,7 +14,7 @@ class GPS:
       return ser
 
    def __init__(self):
-      self.ser = set_up_gps()
+      self.ser = self.set_up_gps()
       self.ser.flush()
 
       self.long = {
