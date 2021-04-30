@@ -4,6 +4,8 @@ import serial
 class GPS:
    def __init__(self):
       self.ser = set_up_gps()
+      self.ser.flush()
+      
       self.long = {
          "degrees":0,
          "minutes":0.0,
