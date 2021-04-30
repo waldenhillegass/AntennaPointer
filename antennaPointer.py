@@ -1,11 +1,11 @@
 from navx import NAVX
 from time import sleep
-from serial import Serial
+import serial
 
 imu = NAVX(1);
 
 def set_up_gps():
-     ser = Serial(
+     ser = serial.Serial(
         port = '/dev/ttyAMA0',
         baudrate = 9600,
         parity = serial.PARITY_NONE,
