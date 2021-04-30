@@ -41,8 +41,8 @@ class GPS:
             self.long["time"] = time.time()
 
             self.lat["degrees"] = int(data[20:23])
-            self.long["minutes"] = float(data[23:31])
-            self.long["time"] = time.time()
+            self.lat["minutes"] = float(data[23:31])
+            self.lat["time"] = time.time()
             newData = True
       return newData
             
@@ -55,4 +55,4 @@ class GPS:
       return self.lat
 
    def __str__(self):
-      return f'longitude: {self.long}, latitude: {self.long}'
+      return f'longitude: {self.long}, latitude: {self.lat}'
