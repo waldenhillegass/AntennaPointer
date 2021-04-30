@@ -30,8 +30,8 @@ class GPS:
    
    def readGPS(self):
       newData = False
-      while(ser.in_waiting() > 0):
-         data = str(ser.read_until(), 'UTF-8')
+      while(self.ser.in_waiting() > 0):
+         data = str(self.ser.read_until(), 'UTF-8')
          if data.startswith("$GPGLL"):
             #$GPGLL,3517.98388,N,12040.57134,W,061920.00,A,D*73\r\n
             #0      7 9      1   1  2       3
