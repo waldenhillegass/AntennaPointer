@@ -6,7 +6,7 @@ imu = NAVX(1);
 
 def set_up_gps():
      ser = serial.Serial(
-        port = '/dev/ttyAMA0',
+        port = '/dev/ttyS0',
         baudrate = 9600,
         parity = serial.PARITY_NONE,
         stopbits = serial.STOPBITS_ONE,
