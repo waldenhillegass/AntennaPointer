@@ -1,4 +1,5 @@
 from navx import NAVX
+from time import sleep
 
 imu = NAVX(1);
 
