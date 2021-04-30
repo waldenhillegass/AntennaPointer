@@ -1,6 +1,6 @@
 # this file contains a simplified driver for the Kuali Labs NAVx Micro IMU 
 # https://pdocs.kauailabs.com/navx-mxp/advanced/register-protocol/
-from smbus import SMBus
+from smbus2 import SMBus
 from enum import Enum
 
 # i2c address
