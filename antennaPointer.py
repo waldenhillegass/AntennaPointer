@@ -1,6 +1,10 @@
-import navx
+from navx import NAVX
 
-ahrs = navx.AHRS.create_i2c()
+imu = NAVX(1);
+
+
 while(True):
-   print(ahrs.getYaw())
+   sleep(1)
+   print(imu)
+
 
