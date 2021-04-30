@@ -33,13 +33,13 @@ class NAVX:
       
    def getYaw(self):
       # sensor returns hundreths
-      number = self.bus.read_byte_data(DEV_ADDR, YAW_LOW)
-      #number = int.from_bytes(number, byteorder='little', signed=True)
+      number = self.bus.read_i2c_block_data(DEV_ADDR, YAW_LOW, 2)
+      number = int.from_bytes(number, byteorder='little', signed=True)
       return number / 100
 
    def getPitch(self):
-      number = self.bus.read_byte_data(DEV_ADDR, PITCH_LOW)
-      #number = int.from_bytes(number, byteorder='little', signed=True)
+      number = self.bus.read_i2c_block_data(DEV_ADDR, PITCH_LOW, 2)
+      number = int.from_bytes(number, byteorder='little', signed=True)
       return number / 100
 
    def __str__(self):
