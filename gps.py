@@ -2,20 +2,6 @@ import time
 import serial
 
 class GPS:
-   def __init__(self):
-      self.ser = set_up_gps()
-      self.ser.flush()
-      
-      self.long = {
-         "degrees":0,
-         "minutes":0.0,
-      }
-      self.lat = {
-         "degrees":0,
-         "minutes":0.0,
-         "time":0
-      }
-
    def set_up_gps(self):
       ser = serial.Serial(
         port = '/dev/ttyS0',
@@ -26,6 +12,22 @@ class GPS:
         timeout=1
       )
       return ser
+
+   def __init__(self):
+      self.ser = set_up_gps()
+      self.ser.flush()
+
+      self.long = {
+         "degrees":0,
+         "minutes":0.0,
+      }
+      self.lat = {
+         "degrees":0,
+         "minutes":0.0,
+         "time":0
+      }
+
+   
    def readGPS(self):
       newData = False
       while(ser.in_waiting() > 0):
