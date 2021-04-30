@@ -40,8 +40,8 @@ class GPS:
             self.long["minutes"] = float(data[9:17])
             self.long["time"] = time.time()
 
-            self.lat["degrees"] = int(data[19:22])
-            self.long["minutes"] = float(data[22:30])
+            self.lat["degrees"] = int(data[20:23])
+            self.long["minutes"] = float(data[23:31])
             self.long["time"] = time.time()
             newData = True
       return newData
