@@ -21,7 +21,7 @@ class NAVX:
       NORMAL = 4
 
    def __init__(self, channel):
-      self.bus = SMBus.SMBus(channel)
+      self.bus = SMBus(channel)
       test = self.bus.read_byte_data(DEV_ADDR, WHO_AM_I)
       if test == DEV_ADDR:
          print("NAVX succesfully connected")
