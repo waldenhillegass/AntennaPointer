@@ -1,5 +1,6 @@
 import board
 import neopixel
+from time import sleep
 pixels = neopixel.NeoPixel(board.D18, 30)
 
 while(True):
