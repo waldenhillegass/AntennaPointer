@@ -4,7 +4,8 @@ import neopixel
 from time import sleep
 
 def clearStrip():
-   pixels.clear()
+   pixels.fill((0,0,0))
+   pixels.show()
 
 pixels = neopixel.NeoPixel(board.D18, 64)
 atexit.register(clearStrip)
