@@ -5,7 +5,7 @@ from time import sleep
 
 def clearStrip():
    pixels.clear()
-xw
+
 pixels = neopixel.NeoPixel(board.D18, 64)
 atexit.register(clearStrip)
 while(True):
