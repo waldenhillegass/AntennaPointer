@@ -1,12 +1,12 @@
-def clearStrip():
-   
-
-
+import atexit
 import board
 import neopixel
 from time import sleep
-pixels = neopixel.NeoPixel(board.D18, 64)
 
+def clearStrip():
+   pixels.clear()
+xw
+pixels = neopixel.NeoPixel(board.D18, 64)
 atexit.register(clearStrip)
 while(True):
    pixels[0] = (255, 0, 0)
