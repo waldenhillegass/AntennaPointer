@@ -1,6 +1,7 @@
 import time
 import serial
 
+# assumes we are operating in the north and west hemispheres
 class GPS:
    def set_up_gps(self):
       ser = serial.Serial(
@@ -40,7 +41,7 @@ class GPS:
             self.long["minutes"] = float(data[9:17])
             self.long["time"] = time.time()
 
-            self.lat["degrees"] = int(data[20:23])
+            self.lat["degrees"] = -int(data[20:23])
             self.lat["minutes"] = float(data[23:31])
             self.lat["time"] = time.time()
             newData = True
