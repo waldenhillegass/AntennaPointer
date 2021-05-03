@@ -22,9 +22,9 @@ class Matrix:
 
 
       graph[x][y] = True
-      graph[x + 1][y] = True
-      graph[x][y + 1] = True
-      graph[x + 1][y + 1] = True
+      #graph[x + 1][y] = True
+      #graph[x][y + 1] = True
+      #graph[x + 1][y + 1] = True
       
       for row in graph:
          print(row)
