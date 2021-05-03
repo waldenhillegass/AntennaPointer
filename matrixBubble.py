@@ -15,13 +15,13 @@ class Matrix:
       x = max(0, min(6, x))
 
       y = round((dy / self.scale * 3) + 3)
-      y = max(0, min(6, x))
+      y = max(0, min(6, y))
 
       print(f'X: {x}')
       print(f'Y: {y}')
 
 
-      graph[x][y] = True
+      graph[x][y] = [True]
       #graph[x + 1][y] = True
       #graph[x][y + 1] = True
       #graph[x + 1][y + 1] = True
