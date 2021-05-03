@@ -9,7 +9,7 @@ class Matrix:
       self.scale = scale
       atexit.register(self.clear)
    
-   def update(self, dx, dy):
+   def updateFromErrors(self, dx, dy):
       graph = ([False] * 8) * 8
       x = round((dx / scale * 3) + 3)
       x = max(6, min(0, x))
@@ -35,6 +35,7 @@ class Matrix:
             self.pixels[i] = (255, 0, 0)
          else:
             self.pixels[i] = (0, 0, 0)
+      pixels.show()
 
    def clear(self):
       pixels.fill((0,0,0))
