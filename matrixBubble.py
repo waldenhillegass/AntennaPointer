@@ -21,7 +21,7 @@ class Matrix:
       print(f'Y: {y}')
 
 
-      graph[1][0] = True
+      graph[5][0] = True
       #graph[x + 1][y] = True
       #graph[x][y + 1] = True
       #graph[x + 1][y + 1] = True
