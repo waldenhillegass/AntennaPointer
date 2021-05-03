@@ -21,6 +21,9 @@ class Matrix:
       graph[x + 1][y] = True
       graph[x][y + 1] = True
       graph[x + 1][y + 1] = True
+      
+      for row in graph:
+         print(row)
 
       self.setMatrix(graph)
       
@@ -32,7 +35,7 @@ class Matrix:
             y += 1
             x = 0
          if matrix[x][y]:
-            self.pixels[i] = (255, 0, 0)
+            self.pixels[i] = (50, 0, 0)
          else:
             self.pixels[i] = (0, 0, 0)
          x += 1
