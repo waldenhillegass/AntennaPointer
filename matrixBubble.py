@@ -26,7 +26,7 @@ class Matrix:
       
    def setMatrix(self, matrix):
       x = 0
-      y = 0
+      y = -1
       for i in range(0, 64):
          if i % 8 == 0:
             y += 1
