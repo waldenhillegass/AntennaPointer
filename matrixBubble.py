@@ -14,7 +14,7 @@ class Matrix:
       x = round((dx / self.scale * 3) + 3)
       x = max(0, min(6, x))
 
-      y = round((dx / self.scale * 3) + 3)
+      y = round((dy / self.scale * 3) + 3)
       y = max(0, min(6, x))
 
       print(f'X: {x}')
