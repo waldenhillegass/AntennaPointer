@@ -40,9 +40,9 @@ class Matrix:
             x = 0
          if matrix[x][y]:
             if (x == 3 or x == 4) and (y == 3 or y == 4):
-               self.pixels[i] = (0, 50, 0)
+               self.pixels[i] = (0, 255, 0)
             else:
-               self.pixels[i] = (50, 0, 0)
+               self.pixels[i] = (255, 0, 0)
          else:
             self.pixels[i] = (0, 0, 0)
          x += 1
