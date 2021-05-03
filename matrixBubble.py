@@ -10,7 +10,7 @@ class Matrix:
       atexit.register(self.clear)
    
    def updateFromErrors(self, dx, dy):
-      graph = ([False] * 8) * 8
+      graph = [[False] * 8] * 8
       x = round((dx / self.scale * 3) + 3)
       x = max(6, min(0, x))
 
