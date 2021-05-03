@@ -10,7 +10,7 @@ class Matrix:
       atexit.register(self.clear)
    
    def updateFromErrors(self, dx, dy):
-      graph = [ [0]*8 for i in range(8)]
+      graph = [ [False]*8 for i in range(8)]
       x = round((dx / self.scale * 3) + 3)
       x = max(0, min(6, x))
 
@@ -39,7 +39,10 @@ class Matrix:
             y += 1
             x = 0
          if matrix[x][y]:
-            self.pixels[i] = (50, 0, 0)
+            if (x == 3 or x == 4) and (y == 3 or y == 4):
+               self.pixels[i] = (0, 50, 0)
+            else:
+               self.pixels[i] = (50, 0, 0)
          else:
             self.pixels[i] = (0, 0, 0)
          x += 1
