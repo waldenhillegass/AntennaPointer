@@ -35,6 +35,7 @@ class Matrix:
             self.pixels[i] = (255, 0, 0)
          else:
             self.pixels[i] = (0, 0, 0)
+         x += 1
       self.pixels.show()
 
    def clear(self):
