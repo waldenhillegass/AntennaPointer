@@ -10,7 +10,7 @@ class Matrix:
       atexit.register(self.clear)
    
    def updateFromErrors(self, dx, dy):
-      graph = [[False] * 8] * 8
+      graph = [ [0]*8 for i in range(8)]
       x = round((dx / self.scale * 3) + 3)
       x = max(0, min(6, x))
 
@@ -21,10 +21,10 @@ class Matrix:
       print(f'Y: {y}')
 
 
-      graph[5][0] = True
-      #graph[x + 1][y] = True
-      #graph[x][y + 1] = True
-      #graph[x + 1][y + 1] = True
+      graph[x][y] = True
+      graph[x + 1][y] = True
+      graph[x][y + 1] = True
+      graph[x + 1][y + 1] = True
       
       for row in graph:
          print(row)
