@@ -12,10 +12,10 @@ class Matrix:
    def updateFromErrors(self, dx, dy):
       graph = [[False] * 8] * 8
       x = round((dx / self.scale * 3) + 3)
-      x = max(6, min(0, x))
+      x = max(0, min(6, x))
 
       y = round((dx / self.scale * 3) + 3)
-      y = max(6, min(0, x))
+      y = max(0, min(6, x))
 
       print(f'X: {x}')
       print(f'Y: {y}')
