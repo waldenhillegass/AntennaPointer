@@ -1,4 +1,3 @@
-from navx import NAVX
 from gps import GPS
 from matrixBubble import Matrix
 from time import sleep
