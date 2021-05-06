@@ -2,7 +2,12 @@ import board
 import neopixel
 import atexit
 
+# This class controls the 8x8 matrix of LED that displays how to move
+# the antenna. It holds the neoPixel object and maps error to the matrix
+# as a 2x2 spot of lit LEDs
+
 class Matrix:
+   # scale is the beam width of the antenna
    def __init__(self, scale):
       self.pixels = neopixel.NeoPixel(board.D18, 64)
       self.gpsLight = False
