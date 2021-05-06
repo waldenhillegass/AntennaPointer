@@ -16,6 +16,9 @@ class IMU:
       print("Linear acceleration (m/s^2): {}".format(self.sensor.linear_acceleration))
       print("Gravity (m/s^2): {}".format(self.sensor.gravity))
       print()
+
+   def calibrate(self):
+      self.sensor
  
 
 
