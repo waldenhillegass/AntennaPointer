@@ -20,6 +20,7 @@ while(True):
    x = imu.sensor.euler[0]
    y = imu.sensor.euler[1]
    matrix.updateFromErrors(x,y)
+   sleep(.5)
 
 
 # Must be in degrees and elev in meters
