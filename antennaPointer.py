@@ -12,7 +12,7 @@ matrix = Matrix(scale)
 
 
 while(True):
-   print(imu)
+   imu.printStatus()
 
    gps.readGPS()
    print(gps)
