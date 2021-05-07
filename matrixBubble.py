@@ -51,6 +51,7 @@ class Matrix:
             else: 
                self.pixels[i] = (0, 0, 0)
          x += 1
+      pixels[0] = (0, 0, 25)
       self.pixels.show()
 
    def clear(self):
@@ -60,6 +61,6 @@ class Matrix:
    def toggleGpsIndicator(self):
       self.gpsLight = not self.gpsLight
       if(self.gpsLight):
-         self.pixels[0] = (255, 0, 0)
+         self.pixels[0] = (50, 0, 0)
       else:
          self.pixels[0] = (0, 0, 0)
