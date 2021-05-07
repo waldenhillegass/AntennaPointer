@@ -31,9 +31,6 @@ class Matrix:
       graph[x][y + 1] = True
       graph[x + 1][y + 1] = True
       
-      for row in graph:
-         print(row)
-
       self.setMatrix(graph)
       
    def setMatrix(self, matrix):
