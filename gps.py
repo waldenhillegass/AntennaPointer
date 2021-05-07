@@ -1,7 +1,7 @@
 import time
 import serial
 
-# assumes we are operating in the north and west hemispheres
+# assumes we are operating in the north and west hemispheres (sue me)
 class GPS:
    def set_up_gps(self):
       ser = serial.Serial(
