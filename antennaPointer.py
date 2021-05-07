@@ -2,7 +2,12 @@ from gps import GPS
 from matrixBubble import Matrix
 from time import sleep
 from imu import IMU
+from calculations import calcAngles
 import serial
+
+tPosLat = 35.3025
+tPosLong = -120.6974
+tPosElv = 471
 
 imu = IMU();
 gps = GPS()
@@ -12,14 +17,18 @@ matrix = Matrix(scale)
 
 
 while(True):
+
+
    imu.printStatus()
 
    gps.readGPS()
    print(gps)
 
-   x = imu.sensor.euler[1]
-   y = imu.sensor.euler[2]
-   matrix.updateFromErrors(x,y)
+   sweepElv = calcAngles(gps.getLatitude, gps.getLongitude, gps.elevation, tPosLat, tPosLong, tPosElv)
+   dx = sweepElv[0] - imu.sensor.euler[0]
+   dy = sweepElv[1] - imu.sensor.euler[1]
+
+   matrix.updateFromErrors(dx,dy)
    sleep(.1)
 
 
