@@ -17,8 +17,8 @@ while(True):
    gps.readGPS()
    print(gps)
 
-   x = imu.sensor.euler[0]
-   y = imu.sensor.euler[1]
+   x = imu.sensor.euler[1]
+   y = imu.sensor.euler[2]
    matrix.updateFromErrors(x,y)
    sleep(.5)
 
