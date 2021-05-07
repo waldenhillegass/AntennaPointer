@@ -53,7 +53,8 @@ class GPS:
                self.elevation = float(arr[9])
 
       except Exception as e:
-         self.ser.flush()
+         self.ser.close()
+         self.ser = self.set_up_gps()
          print(e)
          print("GPS READ ERROR")
          return False
