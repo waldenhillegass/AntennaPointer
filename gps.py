@@ -50,7 +50,7 @@ class GPS:
             
             if data.startswith("$GPGGA"):
                arr = data.split(",")
-               self.altitude = float(arr[9])
+               self.elevation = float(arr[9])
 
       except Exception as e:
          self.ser.flush()
