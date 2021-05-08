@@ -32,6 +32,9 @@ while(True):
       dy = dy - 360
    if(dy < -360):
       dy = dy + 360
+   
+   print("dy = " + dy)
+   print("dx = " + dx)
 
    matrix.updateFromErrors(dx,dy)
    sleep(.1)
