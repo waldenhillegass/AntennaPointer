@@ -9,7 +9,7 @@ tPosLat = 35.3025
 tPosLong = -120.6974
 tPosElv = 471
 
-imu = IMU();
+imu = IMU()
 gps = GPS()
 
 scale = int(input("Enter scale: "))
