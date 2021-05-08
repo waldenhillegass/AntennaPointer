@@ -63,11 +63,11 @@ class GPS:
 
    # Returns decimal degrees of current longitude
    def getLongitude(self):
-      decimalDegrees = self.long["degrees"] + self.long["minutes"] / 60
+      decimalDegrees = float(self.long["degrees"]) + float(self.long["minutes"]) / 60
       return decimalDegrees
    
    def getLatitude(self):
-     decimalDegrees = self.lat["degrees"] + self.lat["minutes"] / 60
+     decimalDegrees = float(self.lat["degrees"]) + float(self.lat["minutes"]) / 60
      return decimalDegrees
 
    def __str__(self):

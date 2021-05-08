@@ -6,11 +6,11 @@ import numpy
 def main():
    myPosLat = 35.28292
    myPosLong = -120.68196
-   myPosElv = 289.56
+   myPosElv = 90
 
-   tPosLat = 35.30173
-   tPosLong = -120.69650
-   tPosElv = 471.2208
+   tPosLat = 35.3025
+   tPosLong = -120.6974
+   tPosElv = 471
 
    print(calcAngles(myPosLat, myPosLong, myPosElv, tPosLat, tPosLong, tPosElv))
 
