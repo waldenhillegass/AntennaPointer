@@ -59,6 +59,9 @@ def calcAngles (mylat, mylon, myelv, blat, blon, belv):
    sweep = nPi.arcsin(pos[0]/hyp)
    elev = nPi.arctan(pos[2]/ hyp)
 
+   sweep *= 57.2958
+   elev *= 57.2958
+
    if (pos[1] < 0):
       sweep = 180 - sweep
    if(pos[1] > 0 and pos[0] < 0):
