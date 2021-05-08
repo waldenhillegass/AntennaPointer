@@ -31,11 +31,10 @@ while(True):
 
    print(sweepElv)
 
-   if(dy > 360):
-      dx = dx - 360
-   if(dy < -360):
-      dx = dx + 360
-   
+   if dx < -180:
+      dx += 360
+   if dx > 180:
+      dx -= 360
    print(f"dy = {dy}")
    print(f"dx = {dx}")
 
