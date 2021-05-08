@@ -29,12 +29,12 @@ while(True):
    dy = sweepElv[1] - imu.sensor.euler[1]
 
    if(dy > 360):
-      dy = dy - 360
+      dx = dx - 360
    if(dy < -360):
-      dy = dy + 360
+      dx = dx + 360
    
    print(f"dy = {dy}")
-   print(f"dx = {dy}")
+   print(f"dx = {dx}")
 
    matrix.updateFromErrors(dx,dy)
    sleep(.1)
