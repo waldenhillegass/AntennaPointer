@@ -27,6 +27,7 @@ class GPS:
          "minutes":0.0,
          "time":0
       }
+      self.elevation = -1
 
    
    def readGPS(self):
@@ -38,27 +39,36 @@ class GPS:
                #$GPGLL,3517.98388,N,12040.57134,W,061920.00,A,D*73\r\n
                #0      7 9      1   1  2       3
                #                6   9  2       0
-               self.long["degrees"] = int(data[7:9])
-               self.long["minutes"] = float(data[9:17])
-               self.long["time"] = time.time()
-
-               self.lat["degrees"] = -int(data[20:23])
-               self.lat["minutes"] = float(data[23:31])
+               self.lat["degrees"] = int(data[7:9])
+               self.lat["minutes"] = float(data[9:17])
                self.lat["time"] = time.time()
+
+               self.long["degrees"] = -int(data[20:23])
+               self.long["minutes"] = float(data[23:31])
+               self.long["time"] = time.time()
                newData = True
+            
+            if data.startswith("$GPGGA"):
+               arr = data.split(",")
+               self.elevation = float(arr[9])
+
       except Exception as e:
+         self.ser.close()
+         self.ser = self.set_up_gps()
          print(e)
          print("GPS READ ERROR")
          return False
       return newData
             
 
-   # Returns a dictionary with degrees and minutes
+   # Returns decimal degrees of current longitude
    def getLongitude(self):
-      return self.long
-   
+      decimalDegrees = float(self.long["degrees"]) - float(self.long["minutes"]) / 60
+      return float(decimalDegrees)
+
    def getLatitude(self):
-      return self.lat
+     decimalDegrees = float(self.lat["degrees"]) + float(self.lat["minutes"]) / 60
+     return float(decimalDegrees)
 
    def __str__(self):
-      return f'longitude: {self.long}, latitude: {self.lat}'
+      return f'longitude: {self.getLongitude()}, latitude: {self.getLatitude()}, elvation: {self.elevation}'

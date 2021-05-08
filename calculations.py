@@ -32,7 +32,7 @@ def calcAngles (mylat, mylon, myelv, blat, blon, belv):
    tPos = geoToEcef(blat, blon, belv)
    dPos = nPi.subtract(tPos, myPos)
 
-   dPos = nPi.rot90(dPos)
+   dPos = nPi.rot90(dPos, 3)
 
    lam = nPi.radians(mylat)
    phi = nPi.radians(mylon)
@@ -40,7 +40,7 @@ def calcAngles (mylat, mylon, myelv, blat, blon, belv):
    rot1 = [
       [1, 0,             0],
       [0, -nPi.sin(lam), nPi.cos(lam)],
-      [0, nPi.cos(phi), nPi.sin(lam)],
+      [0, nPi.cos(lam), nPi.sin(lam)],
       ]
    rot1 = nPi.matrix(rot1)
    
@@ -50,13 +50,30 @@ def calcAngles (mylat, mylon, myelv, blat, blon, belv):
       [0,0,1]
    ]
    rot2 = nPi.matrix(rot2)
-
+   
    rots = rot1 * rot2
    pos = rots * dPos
 
-   sweep = nPi.arctan(pos[0][0] / pos[1][1])
-   elv = nPi.arctan(pos[2][2]/math.sqrt((pos[0][0] * pos[0][0]) + (pos[1][1] * pos[1][1])))
-   return dPos
+   x = float(pos[0])
+   y = float(pos[1])
+   z = float(pos[2])
+
+   hyp = math.sqrt(x ** 2 + y ** 2)
+   print("posç")
+   print(pos)
+
+   sweep = nPi.arcsin(x/hyp)
+   elev = nPi.arctan(z/hyp)
+
+   sweep *= 57.2958
+   elev *= 57.2958
+
+   if (pos[1] < 0):
+      sweep = 180 - sweep
+   if(pos[1] > 0 and pos[0] < 0):
+      sweep = 360 + sweep
+
+   return (sweep, elev)
 
 
 
