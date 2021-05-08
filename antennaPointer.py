@@ -26,7 +26,7 @@ while(True):
 
    sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
    dx = sweepElv[0] - imu.sensor.euler[0]
-   dy = sweepElv[1] - imu.sensor.euler[1]
+   dy = sweepElv[1] - imu.sensor.euler[2]
 
    print(sweepElv)
 
