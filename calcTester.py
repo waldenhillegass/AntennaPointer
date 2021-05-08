@@ -5,7 +5,7 @@ import numpy
 
 def main():
    myPosLat = 35.29975
-   myPosLong = -119.323841
+   myPosLong = -120.6761616
    myPosElv = 95.0
 
    tPosLat = 35.3025
