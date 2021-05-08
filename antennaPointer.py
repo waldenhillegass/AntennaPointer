@@ -2,7 +2,7 @@ from gps import GPS
 from matrixBubble import Matrix
 from time import sleep
 from imu import IMU
-from calculations import calcAngles
+from calculations import *
 import serial
 
 tPosLat = 35.3025
