@@ -67,7 +67,7 @@ def calcAngles (mylat, mylon, myelv, blat, blon, belv):
    if(pos[1] > 0 and pos[0] < 0):
       sweep = 360 + sweep
 
-   return (sweep[0], elev[0])
+   return (float(sweep[0]), float(elev[0]))
 
 
 
