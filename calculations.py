@@ -54,12 +54,16 @@ def calcAngles (mylat, mylon, myelv, blat, blon, belv):
    rots = rot1 * rot2
    pos = rots * dPos
 
-   hyp = math.sqrt([0] * pos[0] + pos[1] * pos[1])
+   x = float(pos[0])
+   y = float(pos[1])
+   z = float(pos[2])
+
+   hyp = math.sqrt(x ** 2 + y ** 2)
    print("posç")
    print(pos)
 
-   sweep = nPi.arcsin(pos[0]/hyp)
-   elev = nPi.arctan(pos[2]/ hyp)
+   sweep = nPi.arcsin(x/hyp)
+   elev = nPi.arctan(z/hyp)
 
    sweep *= 57.2958
    elev *= 57.2958
