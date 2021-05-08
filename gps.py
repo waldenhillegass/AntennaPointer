@@ -67,7 +67,7 @@ class GPS:
       return decimalDegrees
    
    def getLatitude(self):
-     decimalDegrees = float(self.lat["degrees"]) + float(self.lat["minutes"]) / 60
+     decimalDegrees = float(self.lat["degrees"]) - float(self.lat["minutes"]) / 60
      return decimalDegrees
 
    def __str__(self):
