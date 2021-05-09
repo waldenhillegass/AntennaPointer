@@ -5,9 +5,30 @@ from imu import IMU
 from calculations import *
 import serial
 
-tPosLat = 35.3025
-tPosLong = -120.6974
-tPosElv = 471
+# GPS Imports
+from time import gmtime, strftime
+import sqlite3
+import serial
+from sqlite3 import Error
+import json
+import logging
+
+# tPosLat = 35.3025
+# tPosLong = -120.6974
+# tPosElv = 471
+
+# Read data from serial
+def get_balloon_gps():
+   payload = ser.readline()
+    prstrip = payload.rstrip().decode('utf8')
+    if len(prstrip) > 0:
+      print(prstrip)
+      try:
+        p = json.loads(prstrip)
+      except:
+         print(prstrip)
+         print("Invalid Packet")
+   return p['latitude'], p['longitude'], p['altitude']
 
 imu = IMU()
 gps = GPS()
@@ -24,6 +45,7 @@ while(True):
    gps.readGPS()
    print(gps)
 
+   tPosLat, tPosLong, tPosElv = get_balloon_gps() 
 
    sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
 
