@@ -5,7 +5,7 @@ from imu import IMU
 from calculations import *
 from time import gmtime, strftime
 import sqlite3
-import serial
+import serial as ser
 from sqlite3 import Error
 import json
 import logging
