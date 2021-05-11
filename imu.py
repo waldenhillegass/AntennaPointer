@@ -20,7 +20,7 @@ class IMU:
 
       angle = math.atan(y/x)
       angle *= -57.2958
-      angle -= 12.6 # declination angle
+      angle += 12.6 # declination angle
 
       if angle < 0: 
          angle = 360 + angle
