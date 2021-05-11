@@ -26,13 +26,3 @@ class IMU:
          angle = 360 + angle
       
       return angle
-
-
-
-      
-
-      
-
-      
-
-
