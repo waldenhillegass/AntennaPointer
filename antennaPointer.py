@@ -64,6 +64,7 @@ def get_balloon_gps():
       except:
          print(prstrip)
          print("Invalid Packet")
+         return p
          
    return p['latitude'], p['longitude'], p['altitude']
 
