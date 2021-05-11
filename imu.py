@@ -15,8 +15,8 @@ class IMU:
       print()
 
    def magneticNorth(self):
-      x = self.sensor.magnetic[0]
-      y = self.sensor.magnetic[1]
+      y = self.sensor.magnetic[0]
+      x = self.sensor.magnetic[1]
 
       angle = math.atan(y/x)
       angle *= 57.2958
