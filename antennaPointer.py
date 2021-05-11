@@ -5,7 +5,7 @@ from imu import IMU
 from calculations import *
 from time import gmtime, strftime
 import sqlite3
-import serial as ser
+import serial
 from sqlite3 import Error
 import json
 import logging
@@ -53,7 +53,9 @@ def main():
 
 # Read data from serial
 def get_balloon_gps():
-   payload = ser.readline()
+   ser = serial.Serial('/dev/ttyUSB0', 115200)
+   payload = ser.read_until()
+   print(payload)
    prstrip = payload.rstrip().decode('utf8')
    if len(prstrip) > 0:
       print(prstrip)
