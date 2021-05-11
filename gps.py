@@ -71,4 +71,4 @@ class GPS:
      return float(decimalDegrees)
 
    def __str__(self):
-      return f'longitude: {self.getLongitude()}, latitude: {self.getLatitude()}, elvation: {self.elevation}'
+      return f'longitude: {self.getLongitude()}, latitude: {self.getLatitude()}, elevation: {self.elevation}'

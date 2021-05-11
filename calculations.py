@@ -59,12 +59,13 @@ def calcAngles (mylat, mylon, myelv, blat, blon, belv):
    z = float(pos[2])
 
    hyp = math.sqrt(x ** 2 + y ** 2)
-   print("posç")
+   print("pos")
    print(pos)
 
    sweep = nPi.arcsin(x/hyp)
    elev = nPi.arctan(z/hyp)
 
+   # converting to degrees
    sweep *= 57.2958
    elev *= 57.2958
 
