@@ -17,8 +17,6 @@ matrix = Matrix(scale)
 
 
 while(True):
-
-
    imu.printStatus()
 
    gps.readGPS()
@@ -40,6 +38,7 @@ while(True):
          dx -= 360
       print(f"dy = {dy}")
       print(f"dx = {dx}")
+
    except Exception as e:
       print("IMU READ ERROR")
       print(e)
