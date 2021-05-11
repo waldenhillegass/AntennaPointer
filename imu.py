@@ -19,7 +19,7 @@ class IMU:
       x = self.sensor.magnetic[1]
 
       angle = math.atan(y/x)
-      angle *= 57.2958
+      angle *= -57.2958
       angle -= 12.6 # declination angle
 
       if angle < 0: 
