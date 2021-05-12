@@ -80,7 +80,7 @@ def calibrate(imu, matrix):
       dx = imu.getRoll()
       matrix.updateFromErrors(dx,dy, True)
 
-      if dx < matrix.scale / 3 and dy < matrix.scale:
+      if dx < matrix.scale / 2 and dy < matrix.scale / 2:
          imu.pokeMovingAverage()
 
       if quad == 0:
