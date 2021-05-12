@@ -75,7 +75,7 @@ def calibrate(imu, matrix):
    quad = 0
    while (not complete):
       imu.printStatus()
-      
+
       dy = imu.getPitch()
       dx = imu.getRoll()
       matrix.updateFromErrors(dx,dy, True)
@@ -84,7 +84,7 @@ def calibrate(imu, matrix):
          imu.pokeMovingAverage()
 
       if quad == 0:
-         if imu.getYaw() > 90:
+         if imu.getYaw() < 90:
             quad += 1
       if quad == 1:
          if imu.getYaw() > 180:
