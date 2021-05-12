@@ -87,9 +87,10 @@ class IMU:
       x = self.sensor.magnetic[1]
       z = self.sensor.magnetic[2]
 
-      magVec = [x, y, x]
+      magVec = [x, y, z]
       magVec = nPi.matrix(magVec)
       macVec = nPi.rot90(magVec, 3)
+      print(magVec)
 
       rot1 = [
       [1, 0, 0],
@@ -108,6 +109,8 @@ class IMU:
       superRot = rot1 * rot2
 
       adjustedVec = superRot * magVec
+
+      print(adjustedVec)
 
       y = float(adjustedVec[0])
       x = float(adjustedVec[1])
