@@ -16,6 +16,7 @@ class IMU:
       try:
          print("Magnetometer (microteslas): {}".format(self.sensor.magnetic))
          print("Euler angle: {}".format(self.sensor.euler))
+         print("Heading: {}".format(self.getHeading()))
          print("Compass angle: {}".format(self.magneticNorth()))
          print()
       except Exception as e:
