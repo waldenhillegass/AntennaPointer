@@ -46,13 +46,14 @@ def main():
             dx -= 360
          print(f"dy = {dy}")
          print(f"dx = {dx}")
+         matrix.updateFromErrors(dx,dy)
 
       except Exception as e:
          print("IMU READ ERROR")
          print(e)
 
 
-      matrix.updateFromErrors(dx,dy)
+      
       sleep(.1)
 
 # Read data from serial
