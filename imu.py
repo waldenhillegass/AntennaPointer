@@ -25,7 +25,7 @@ class IMU:
       return sum(self.rollingAverage) / len(self.rollingAverage)
    
    def pokeMovingAverage(self):
-      offset = dTheta(self.magneticNorth(), getYaw())
+      offset = dTheta(self.magneticNorth(), self.getYaw())
       self.rollingAverage.append(offset)
       if(len(self.rollingAverage) > 100):
          self.rollingAverage.pop(0)
@@ -44,7 +44,7 @@ class IMU:
    
    def getPitch(self):
       pitch = self.sensor.euler[2]
-      if yaw is not None:
+      if pitch is not None:
          self.lastPitch = pitch
       else:
          print("IMU READ ERROR")
