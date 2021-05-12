@@ -22,7 +22,7 @@ def main():
    matrix.toggleStatusIndicator()
    try:
       while tok == None:
-         tok = authentcate()
+         tok = authenticate()
 
    except Exception as e:
       while True:
