@@ -67,8 +67,8 @@ class IMU:
       return self.lastRoll
 
    def magneticNorth(self):
-      y = self.sensor.magnetic[0]
-      x = self.sensor.magnetic[1]
+      y = -self.sensor.magnetic[0]
+      x = -self.sensor.magnetic[1]
       z = self.sensor.magnetic[2]
 
       angle = math.atan2(y, x)

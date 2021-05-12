@@ -30,6 +30,8 @@ def main():
          sleep(.1)
          matrix.toggleStatusIndicator()
 
+   calibrate(imu, matrix)
+
    while(True):
       tPosLat = 35.3025
       tPosLong = -120.6974
@@ -43,7 +45,6 @@ def main():
 
       gps.readGPS()
       print(gps)
-      imu.pokeMovingAverage()
 
 
       sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
@@ -67,6 +68,31 @@ def main():
       #  print("IMU READ ERROR")
       #  print(e)
       sleep(.1)
+   
+
+def calibrate(imu, matrix):
+   complete = False
+   quad = 0
+   while (not complete):
+      dx = imu.getPitch()
+      dy = imu.getRoll()
+      matrix.updateFromErrors(dx,dy, True)
+
+      if dx < matrix.scale / 3 and dy < matrix.scale:
+         imu.pokeMovingAverage()
+
+      if quad == 0:
+         if imu.getYaw() > 90:
+            quad += 1
+      if quad == 1:
+         if imu.getYaw() > 180:
+            quad += 1
+      if quad == 2:
+         if imu.getYaw() < 90:
+            complete = True
+   
+      
+      
 
 
 main()

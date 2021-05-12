@@ -14,7 +14,7 @@ class Matrix:
       self.scale = scale
       atexit.register(self.clear)
    
-   def updateFromErrors(self, dx, dy):
+   def updateFromErrors(self, dx, dy, calibrateMode):
       graph = [ [False]*8 for i in range(8)]
       x = round((dx / self.scale * 3) + 3)
       x = max(0, min(6, x))
@@ -24,6 +24,12 @@ class Matrix:
 
       print(f'X: {x}')
       print(f'Y: {y}')
+
+      if (calibrateMode):
+         graph[0][0] = True
+         graph[0][7] = True
+         graph[7][0] = True
+         graph[7][7] = True
 
 
       graph[x][y] = True
