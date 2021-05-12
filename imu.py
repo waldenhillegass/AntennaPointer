@@ -40,7 +40,7 @@ class IMU:
          self.lastYaw = yaw
       else:
          print("IMU READ ERROR")
-      return lastYaw
+      return self.lastYaw
    
    def getPitch(self):
       pitch = self.sensor.euler[2]
@@ -48,7 +48,7 @@ class IMU:
          self.lastPitch = pitch
       else:
          print("IMU READ ERROR")
-      return lastPitch
+      return self.lastPitch
 
    def magneticNorth(self):
       y = self.sensor.magnetic[0]
