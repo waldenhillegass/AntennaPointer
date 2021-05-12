@@ -74,8 +74,8 @@ def calibrate(imu, matrix):
    complete = False
    quad = 0
    while (not complete):
-      dx = imu.getPitch()
-      dy = imu.getRoll()
+      dy = imu.getPitch()
+      dx = imu.getRoll()
       matrix.updateFromErrors(dx,dy, True)
 
       if dx < matrix.scale / 3 and dy < matrix.scale:
