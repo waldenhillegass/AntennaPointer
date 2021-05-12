@@ -84,3 +84,41 @@ def dTheta(a1, a2):
       diff -= 360
    
    return diff
+
+def tiltCorrectCalcs(lam, phi, x,y,z):
+   magVec = [x, y, z]
+   magVec = nPi.matrix(magVec)
+
+   magVec = nPi.rot90(magVec, 3)
+   print(magVec)
+
+   lam = nPi.radians(lam)
+   lam = nPi.radians(phi)
+   rot1 = [
+   [1, 0, 0],
+   [0, -nPi.sin(lam), nPi.cos(lam)],
+   [0, nPi.cos(lam), nPi.sin(lam)],
+   ]
+   rot1 = nPi.matrix(rot1)
+
+   rot2 = [
+   [-nPi.sin(phi), 0, -nPi.cos(phi)],
+   [0, 1, 0],
+   [nPi.cos(phi), 0, nPi.sin(phi)]
+   ]
+   rot2 = nPi.matrix(rot2)
+
+   superRot = rot1 * rot2
+
+   adjustedVec = superRot * magVec
+
+   print(adjustedVec)
+
+   y = float(adjustedVec[0])
+   x = float(adjustedVec[1])
+   z = float(adjustedVec[2])
+
+   angle = math.atan2(y, x)
+   angle *= -57.2958
+   angle += 12.6
+   return angle

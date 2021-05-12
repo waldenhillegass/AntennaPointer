@@ -87,38 +87,6 @@ class IMU:
       x = self.sensor.magnetic[1]
       z = self.sensor.magnetic[2]
 
-      magVec = [x, y, z]
-      magVec = nPi.matrix(magVec)
-      macVec = nPi.rot90(magVec, 1)
-      print(magVec)
-
-      rot1 = [
-      [1, 0, 0],
-      [0, -nPi.sin(lam), nPi.cos(lam)],
-      [0, nPi.cos(lam), nPi.sin(lam)],
-      ]
-      rot1 = nPi.matrix(rot1)
-
-      rot2 = [
-      [-nPi.sin(phi), 0, -nPi.cos(phi)],
-      [0, 1, 0],
-      [nPi.cos(phi), 0, nPi.sin(phi)]
-      ]
-      rot2 = nPi.matrix(rot2)
-
-      superRot = rot1 * rot2
-
-      adjustedVec = superRot * magVec
-
-      print(adjustedVec)
-
-      y = float(adjustedVec[0])
-      x = float(adjustedVec[1])
-      z = float(adjustedVec[2])
-
-      ngle = math.atan2(y, x)
-      angle *= -57.2958
-      angle += 12.6
-      return angle
+      return tiltCorrectCalcs(lam, phi, x,y,z)
       
       
