@@ -33,24 +33,24 @@ def main():
 
       sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
 
-      try:
-         dx = sweepElv[0] - imu.getHeading()
-         dy = sweepElv[1] - imu.sensor.euler[2]
-         dx *= -1
+      #try:
+      dx = sweepElv[0] - imu.getHeading()
+      dy = sweepElv[1] - imu.sensor.euler[2]
+      dx *= -1
 
-         print(sweepElv)
+      print(sweepElv)
 
-         if dx < -180:
-            dx += 360
-         if dx > 180:
-            dx -= 360
-         print(f"dy = {dy}")
-         print(f"dx = {dx}")
-         matrix.updateFromErrors(dx,dy)
+      if dx < -180:
+         dx += 360
+      if dx > 180:
+         dx -= 360
+      print(f"dy = {dy}")
+      print(f"dx = {dx}")
+      matrix.updateFromErrors(dx,dy)
 
-      except Exception as e:
-         print("IMU READ ERROR")
-         print(e)
+      #except Exception as e:
+      #  print("IMU READ ERROR")
+      #  print(e)
 
 
       
