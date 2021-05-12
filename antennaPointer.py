@@ -51,30 +51,8 @@ def main():
       #except Exception as e:
       #  print("IMU READ ERROR")
       #  print(e)
-
-
-      
       sleep(.1)
 
-# Read data from serial
-def get_balloon_gps():
-   ser = serial.Serial('/dev/ttyUSB0', 115200)
-   payload = ser.read_until()
-   print(payload)
-   prstrip = payload.rstrip().decode('utf8')
-   if len(prstrip) > 0:
-      print(prstrip)
-      try:
-         p = json.loads(prstrip)
-      except:
-         print(prstrip)
-         print("Invalid Packet")
-         return p
-         
-   return p['latitude'], p['longitude'], p['altitude']
 
 main()
    # Must be in degrees and elev in meters
-
-
-
