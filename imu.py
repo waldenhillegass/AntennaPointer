@@ -20,7 +20,7 @@ class IMU:
       print("Euler angle: {}".format(self.sensor.euler))
       print("Heading: {}".format(self.getHeading()))
       print("Unadjusted Compass angle: {}".format(self.magneticNorth()))
-      print("Adjusted Compass angle: {}".format(self.tiltCorrectedCompass()))
+      #print("Adjusted Compass angle: {}".format(self.tiltCorrectedCompass()))
       print("Average offset: {}".format(self.getAverageOffset()))
       print()
    def getAverageOffset(self):
