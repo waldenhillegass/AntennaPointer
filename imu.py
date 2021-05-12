@@ -80,8 +80,8 @@ class IMU:
       return angle
 
    def tiltCorrectedCompass(self):
-      lam = self.getRoll()
-      phi = self.getPitch()
+      phi = self.getRoll()
+      lam = self.getPitch()
 
       x = self.sensor.magnetic[0]
       y = self.sensor.magnetic[1]
