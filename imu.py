@@ -89,7 +89,7 @@ class IMU:
 
       magVec = [x, y, z]
       magVec = nPi.matrix(magVec)
-      macVec = nPi.rot90(magVec, 3)
+      # macVec = nPi.rot90(magVec, 3)
       print(magVec)
 
       rot1 = [
