@@ -83,4 +83,4 @@ def dTheta(a1, a2):
    if diff > 180:
       diff -= 360
    
-   return dTheta
+   return diff
