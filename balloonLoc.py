@@ -11,7 +11,7 @@ def authenticate():
       json = usrPass, 
       headers={'Content-Type': 'application/json'}
    )
-   if r.status_code() != 200:
+   if r.status_code != 200:
       return None
 
 
