@@ -23,16 +23,16 @@ def main():
    try:
       while tok == None:
          tok = authentcate()
-         
+
    except Exception as e:
       while True:
          sleep(.1)
          matrix.toggleStatusIndicator()
 
    while(True):
-      if i % 100 == 0:
-         pullCords()
-      i += 1
+      #if i % 100 == 0:
+      #   pullCords()
+      #i += 1
       # tPosLat, tPosLong, tPosElv = get_balloon_gps() 
 
       imu.printStatus()
