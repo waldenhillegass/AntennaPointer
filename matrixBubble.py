@@ -14,7 +14,7 @@ class Matrix:
       self.scale = scale
       atexit.register(self.clear)
    
-   def updateFromErrors(self, dx, dy, calibrateMode):
+   def updateFromErrors(self, dx, dy, calibrateMode = False):
       graph = [ [False]*8 for i in range(8)]
       x = round((dx / self.scale * 3) + 3)
       x = max(0, min(6, x))
