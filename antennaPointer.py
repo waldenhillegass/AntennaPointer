@@ -74,6 +74,8 @@ def calibrate(imu, matrix):
    complete = False
    quad = 0
    while (not complete):
+      imu.printStatus()
+      
       dy = imu.getPitch()
       dx = imu.getRoll()
       matrix.updateFromErrors(dx,dy, True)
