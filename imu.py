@@ -33,7 +33,11 @@ class IMU:
          self.rollingAverage.pop(0)
 
    def getHeading(self):
-      heading = dTheta(self.getYaw(), self.getAverageOffset())
+      heading = self.getYaw() + self.getAverageOffset()
+      if heading > 360:
+         heading -= 360
+      if heading < 0:
+         heading += 360
       return heading
 
    def getYaw(self):
