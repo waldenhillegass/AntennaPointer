@@ -25,12 +25,13 @@ def main():
 
       gps.readGPS()
       print(gps)
+      imu.pokeMovingAverage()
 
 
       sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
 
       try:
-         dx = sweepElv[0] - imu.sensor.euler[0]
+         dx = sweepElv[0] - imu.getHeading()
          dy = sweepElv[1] - imu.sensor.euler[2]
          dx *= -1
 

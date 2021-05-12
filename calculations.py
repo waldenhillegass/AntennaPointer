@@ -76,5 +76,11 @@ def calcAngles (mylat, mylon, myelv, blat, blon, belv):
 
    return (sweep, elev)
 
-
-
+def dTheta(a1, a2):
+   diff = a1 - a2
+   if diff < -180:
+      diff += 360
+   if diff > 180:
+      diff -= 360
+   
+   return dTheta
