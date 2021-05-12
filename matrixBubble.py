@@ -42,16 +42,16 @@ class Matrix:
             x = 0
          if matrix[x][y]:
             if (x == 3 or x == 4) and (y == 3 or y == 4):
-               self.pixels[i] = (0, 50, 0)
+               self.pixels[i] = (0, 100, 0)
             else:
-               self.pixels[i] = (50, 0, 0)
+               self.pixels[i] = (100, 0, 0)
          else:
             if (x == 3 or x == 4) and (y == 3 or y == 4):
-               self.pixels[i] = (5, 5, 0)
+               self.pixels[i] = (10, 10, 0)
             else: 
                self.pixels[i] = (0, 0, 0)
          x += 1
-      self.pixels[0] = (0, 0, 25)
+      self.pixels[0] = (0, 0, 50)
       self.pixels.show()
 
    def clear(self):
