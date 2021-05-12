@@ -19,7 +19,10 @@ def main():
 
 
    while(True):
-      tPosLat, tPosLong, tPosElv = get_balloon_gps() 
+      tPosLat = 35.3025
+      tPosLong = -120.6974
+      tPosElv = 471
+      # tPosLat, tPosLong, tPosElv = get_balloon_gps() 
 
       imu.printStatus()
 
