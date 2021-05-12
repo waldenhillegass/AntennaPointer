@@ -83,8 +83,8 @@ class IMU:
       lam = self.getRoll()
       phi = self.getPitch()
 
-      y = self.sensor.magnetic[0]
-      x = self.sensor.magnetic[1]
+      x = self.sensor.magnetic[0]
+      y = self.sensor.magnetic[1]
       z = self.sensor.magnetic[2]
 
       return tiltCorrectCalcs(lam, phi, x,y,z)
