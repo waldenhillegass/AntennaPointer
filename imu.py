@@ -26,7 +26,7 @@ class IMU:
          self.rollingAverage.pop(0)
 
    def getHeading(self):
-      heading = dTheta(self.sensor.euler[0], getAverageOffset())
+      heading = dTheta(self.sensor.euler[0], self.getAverageOffset())
       return heading
    
    def magneticNorth(self):
