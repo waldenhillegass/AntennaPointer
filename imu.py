@@ -24,6 +24,8 @@ class IMU:
       print("Average offset: {}".format(self.getAverageOffset()))
       print()
    def getAverageOffset(self):
+      if len(self.rollingAverage) == 0:
+         return 0
       return sum(self.rollingAverage) / len(self.rollingAverage)
    
    def pokeMovingAverage(self):
