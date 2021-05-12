@@ -7,6 +7,7 @@ def authenticate():
      "Username": os.getenv('API_USER'),
      "Password": os.getenv('API_PASS')
    }
+   print(usrPass)
    r = requests.post('https://owl-dms-api.us-south.cf.appdomain.cloud/api/userData/authenticate',
       json = usrPass, 
       headers={'Content-Type': 'application/json'}
@@ -31,8 +32,8 @@ def getLocation(token):
    print(resp)
 
 
-#tok = authenticate()
-#getLocation(tok)
+tok = authenticate()
+getLocation(tok)
 
 
 
