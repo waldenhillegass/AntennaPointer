@@ -3,6 +3,8 @@ import adafruit_bno055
 import busio
 import math
 from calculations import *
+import numpy as nPi
+
 class IMU:
    def __init__ (self):
       i2c = busio.I2C(board.SCL, board.SDA)
@@ -10,6 +12,7 @@ class IMU:
       self.rollingAverage = []
       self.lastYaw = 0
       self.lastPitch = 0
+      self.lastRoll = 0
 
 
    def printStatus(self):
@@ -17,7 +20,8 @@ class IMU:
          print("Magnetometer (microteslas): {}".format(self.sensor.magnetic))
          print("Euler angle: {}".format(self.sensor.euler))
          print("Heading: {}".format(self.getHeading()))
-         print("Compass angle: {}".format(self.magneticNorth()))
+         print("Unadjusted Compass angle: {}".format(self.magneticNorth()))
+         print("Adjusted Compass angle: {}".format(self.tiltCorrectedCompass()))
          print("Average offset: {}".format(self.getAverageOffset()))
          print()
       except Exception as e:
@@ -55,21 +59,65 @@ class IMU:
       else:
          print("IMU READ ERROR")
       return self.lastPitch
+   
+   def getRoll(self):
+      roll = self.sensor.euler[1]
+      if roll is not None:
+         self.lastRoll = roll
+      else:
+         print("IMU READ ERROR")
+      return self.lastRoll
 
    def magneticNorth(self):
       y = self.sensor.magnetic[0]
       x = self.sensor.magnetic[1]
+      z = self.sensor.magnetic[2]
 
-      if x != 0:
-         angle = math.atan2(y, x)
-      elif y > 0:
-         angle = 0
-      else:
-         angle = 180
+      angle = math.atan2(y, x)
       angle *= -57.2958
       angle += 12.6 # declination angle
 
       if angle < 0: 
          angle = 360 + angle
-      
       return angle
+
+   def tiltCorrectedCompass(self):
+      lam = self.getRoll()
+      phi = self.getPitch()
+
+      y = self.sensor.magnetic[0]
+      x = self.sensor.magnetic[1]
+      z = self.sensor.magnetic[2]
+
+      magVec = [x, y, x]
+      magVec = nPi.matrix(magVec)
+      macVec = nPi.rot90(magVec, 3)
+
+      rot1 = [
+      [1, 0, 0],
+      [0, -nPi.sin(lam), nPi.cos(lam)],
+      [0, nPi.cos(lam), nPi.sin(lam)],
+      ]
+      rot1 = nPi.matrix(rot1)
+
+      rot2 = [
+      [-nPi.sin(phi), 0, -nPi.cos(phi)],
+      [0, 1, 0],
+      [nPi.cos(phi), 0, nPi.sin(phi)]
+      ]
+      rot2 = nPi.matrix(rot2)
+
+      superRot = rot1 * rot2
+
+      adjustedVec = superRot * magVec
+
+      y = float(pos[0])
+      x = float(pos[1])
+      z = float(pos[2])
+
+      ngle = math.atan2(y, x)
+      angle *= -57.2958
+      angle += 12.6
+      return angle
+      
+      
