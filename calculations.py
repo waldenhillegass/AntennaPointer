@@ -27,7 +27,6 @@ def geoToEcef(lat, lon, alt):
    return nPi.matrix([x, y, z])
 
 def calcAngles (mylat, mylon, myelv, blat, blon, belv): 
-
    myPos = geoToEcef(mylat, mylon, myelv)
    tPos = geoToEcef(blat, blon, belv)
    dPos = nPi.subtract(tPos, myPos)
@@ -59,9 +58,6 @@ def calcAngles (mylat, mylon, myelv, blat, blon, belv):
    z = float(pos[2])
 
    hyp = math.sqrt(x ** 2 + y ** 2)
-   print("pos")
-   print(pos)
-
    sweep = nPi.arcsin(x/hyp)
    elev = nPi.arctan(z/hyp)
 
