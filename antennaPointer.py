@@ -9,19 +9,30 @@ import serial
 from sqlite3 import Error
 import json
 import logging
+from balloonLoc import *
 
 def main():
    imu = IMU()
    gps = GPS()
 
-   scale = int(input("Enter scale: "))
+   scale = 20
    matrix = Matrix(scale)
 
+   tok = None
+   matrix.toggleStatusIndicator()
+   try:
+      while tok == None:
+         tok = authentcate()
+         
+   except Exception as e:
+      while True:
+         sleep(.1)
+         matrix.toggleStatusIndicator()
 
    while(True):
-      tPosLat = 35.3025
-      tPosLong = -120.6974
-      tPosElv = 471
+      if i % 100 == 0:
+         pullCords()
+      i += 1
       # tPosLat, tPosLong, tPosElv = get_balloon_gps() 
 
       imu.printStatus()

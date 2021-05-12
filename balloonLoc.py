@@ -11,6 +11,10 @@ def authenticate():
       json = usrPass, 
       headers={'Content-Type': 'application/json'}
    )
+   if r.status_code() != 200:
+      return None
+
+
    return r.content.decode('utf-8')
 
 def getLocation(token):
