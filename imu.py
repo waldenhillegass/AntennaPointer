@@ -16,17 +16,13 @@ class IMU:
 
 
    def printStatus(self):
-      try:
-         print("Magnetometer (microteslas): {}".format(self.sensor.magnetic))
-         print("Euler angle: {}".format(self.sensor.euler))
-         print("Heading: {}".format(self.getHeading()))
-         print("Unadjusted Compass angle: {}".format(self.magneticNorth()))
-         print("Adjusted Compass angle: {}".format(self.tiltCorrectedCompass()))
-         print("Average offset: {}".format(self.getAverageOffset()))
-         print()
-      except Exception as e:
-         pass
-   
+      print("Magnetometer (microteslas): {}".format(self.sensor.magnetic))
+      print("Euler angle: {}".format(self.sensor.euler))
+      print("Heading: {}".format(self.getHeading()))
+      print("Unadjusted Compass angle: {}".format(self.magneticNorth()))
+      print("Adjusted Compass angle: {}".format(self.tiltCorrectedCompass()))
+      print("Average offset: {}".format(self.getAverageOffset()))
+      print()
    def getAverageOffset(self):
       return sum(self.rollingAverage) / len(self.rollingAverage)
    
@@ -111,9 +107,9 @@ class IMU:
 
       adjustedVec = superRot * magVec
 
-      y = float(pos[0])
-      x = float(pos[1])
-      z = float(pos[2])
+      y = float(adjustedVec[0])
+      x = float(adjustedVec[1])
+      z = float(adjustedVec[2])
 
       ngle = math.atan2(y, x)
       angle *= -57.2958
