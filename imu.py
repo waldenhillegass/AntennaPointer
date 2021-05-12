@@ -20,7 +20,7 @@ class IMU:
       return sum(self.rollingAverage) / len(self.rollingAverage)
    
    def pokeMovingAverage(self):
-      offset = dTheta(self.mageticNorth(), self.sensor.euler[0])
+      offset = dTheta(self.magneticNorth(), self.sensor.euler[0])
       self.rollingAverage.append(offset)
       if(len(self.rollingAverage) > 100):
          self.rollingAverage.pop(0)
