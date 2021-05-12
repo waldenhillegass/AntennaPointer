@@ -30,8 +30,8 @@ def getLocation(token):
    print(resp)
 
 
-tok = authenticate()
-getLocation(tok)
+#tok = authenticate()
+#getLocation(tok)
 
 
 
