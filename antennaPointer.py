@@ -33,9 +33,9 @@ def main():
 
       sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
 
-      #try:
+      
       dx = sweepElv[0] - imu.getHeading()
-      dy = sweepElv[1] - imu.sensor.euler[2]
+      dy = sweepElv[1] - imu.getPitch()
       dx *= -1
 
       print(sweepElv)

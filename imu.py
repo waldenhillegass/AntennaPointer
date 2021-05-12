@@ -8,27 +8,48 @@ class IMU:
       i2c = busio.I2C(board.SCL, board.SDA)
       self.sensor = adafruit_bno055.BNO055_I2C(i2c)
       self.rollingAverage = []
+      self.lastYaw = 0
+      self.lastPitch = 0
 
 
    def printStatus(self):
-      print("Magnetometer (microteslas): {}".format(self.sensor.magnetic))
-      print("Euler angle: {}".format(self.sensor.euler))
-      print("Compass angle: {}".format(self.magneticNorth()))
-      print()
+      try:
+         print("Magnetometer (microteslas): {}".format(self.sensor.magnetic))
+         print("Euler angle: {}".format(self.sensor.euler))
+         print("Compass angle: {}".format(self.magneticNorth()))
+         print()
+      except Exception as e:
+         pass
    
    def getAverageOffset(self):
       return sum(self.rollingAverage) / len(self.rollingAverage)
    
    def pokeMovingAverage(self):
-      offset = dTheta(self.magneticNorth(), self.sensor.euler[0])
+      offset = dTheta(self.magneticNorth(), getYaw())
       self.rollingAverage.append(offset)
       if(len(self.rollingAverage) > 100):
          self.rollingAverage.pop(0)
 
    def getHeading(self):
-      heading = dTheta(self.sensor.euler[0], self.getAverageOffset())
+      heading = dTheta(self.getYaw(), self.getAverageOffset())
       return heading
+
+   def getYaw(self):
+      yaw = self.sensor.euler[0]
+      if yaw is not None:
+         self.lastYaw = yaw
+      else:
+         print("IMU READ ERROR")
+      return lastYaw
    
+   def getPitch(self):
+      pitch = self.sensor.euler[2]
+      if yaw is not None:
+         self.lastPitch = pitch
+      else:
+         print("IMU READ ERROR")
+      return lastPitch
+
    def magneticNorth(self):
       y = self.sensor.magnetic[0]
       x = self.sensor.magnetic[1]
