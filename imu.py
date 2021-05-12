@@ -61,7 +61,7 @@ class IMU:
       x = self.sensor.magnetic[1]
 
       if x != 0:
-         angle = math.atan2(y/x)
+         angle = math.atan2(y, x)
       elif y > 0:
          angle = 0
       else:
