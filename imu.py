@@ -18,6 +18,7 @@ class IMU:
          print("Euler angle: {}".format(self.sensor.euler))
          print("Heading: {}".format(self.getHeading()))
          print("Compass angle: {}".format(self.magneticNorth()))
+         print("Average offset: {}".format(self.getAverageOffset()))
          print()
       except Exception as e:
          pass
