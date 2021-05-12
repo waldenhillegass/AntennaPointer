@@ -31,6 +31,9 @@ def main():
          matrix.toggleStatusIndicator()
 
    while(True):
+      tPosLat = 35.3025
+      tPosLong = -120.6974
+      tPosElv = 471
       #if i % 100 == 0:
       #   pullCords()
       #i += 1
