@@ -37,7 +37,9 @@ def main():
    while(True):
       if time.time() - lastUpdated > UPDATE_INTERVAL:
          matrix.toggleStatusIndicator()
-         tPosLat, tPosLong, tPosElv = get_balloon_gps(tok)
+         cords = get_balloon_gps(tok)
+         if cords is not None:
+            tPosLat, tPosLong, tPosElv = cords
          lastUpdated = time.time()
          matrix.toggleStatusIndicator()
 
