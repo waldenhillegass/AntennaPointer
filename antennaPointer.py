@@ -11,6 +11,8 @@ import json
 import logging
 from balloonLoc import *
 
+UPDATE_INTERVAL = 60
+
 def main():
    imu = IMU()
    gps = GPS()
@@ -18,10 +20,10 @@ def main():
    scale = 20
    matrix = Matrix(scale)
 
-   tok = None
+   authTok = None
    matrix.toggleStatusIndicator()
    try:
-      while tok == None:
+      while authTok == None:
          matrix.toggleStatusIndicator()
          tok = authenticate()
 
@@ -31,15 +33,13 @@ def main():
          matrix.toggleStatusIndicator()
 
    calibrate(imu, matrix)
-
+   lastUpdated = 0
    while(True):
-      tPosLat = 35.3025
-      tPosLong = -120.6974
-      tPosElv = 471
-      #if i % 100 == 0:
-      #   pullCords()
-      #i += 1
-      # tPosLat, tPosLong, tPosElv = get_balloon_gps() 
+      if time.time() - lastUpdated > UPDATE_INTERVAL:
+         matrix.toggleStatusIndicator()
+         tPosLat, tPosLong, tPosElv = get_balloon_gps(tok)
+         lastUpdated = time.time()
+         matrix.toggleStatusIndicator()
 
       imu.printStatus()
 
@@ -87,7 +87,7 @@ def calibrate(imu, matrix):
          if imu.getYaw() < 90:
             quad += 1
       if quad == 1:
-         if imu.getYaw() > 180:
+         if imu.getYaw() > 90 and imu.getYaw() < 180:
             quad += 1
       if quad == 2:
          if imu.getYaw() < 90:
