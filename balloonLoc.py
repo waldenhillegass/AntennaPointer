@@ -35,14 +35,3 @@ def get_balloon_gps(token):
       return 35.3025, -120.6974, 471
    except Exception:
       return None
-   
-
-
-
-
-
-tok = authenticate()
-getLocation(tok)
-
-
-
