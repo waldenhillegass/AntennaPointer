@@ -25,7 +25,7 @@ def main():
    try:
       while authTok == None:
          matrix.toggleStatusIndicator()
-         tok = authenticate()
+         authTok = authenticate()
 
    except Exception as e:
       while True:
@@ -37,7 +37,7 @@ def main():
    while(True):
       if time.time() - lastUpdated > UPDATE_INTERVAL:
          matrix.toggleStatusIndicator()
-         cords = get_balloon_gps(tok)
+         cords = get_balloon_gps(authTok)
          if cords is not None:
             tPosLat, tPosLong, tPosElv = cords
          lastUpdated = time.time()
