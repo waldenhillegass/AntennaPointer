@@ -35,7 +35,7 @@ def main():
    calibrate(imu, matrix)
    lastUpdated = 0
    while(True):
-      if time.time() - lastUpdated > UPDATE_INTERVAL:
+      if (time.time() - lastUpdated > UPDATE_INTERVAL):
          matrix.toggleStatusIndicator()
          cords = get_balloon_gps(authTok)
          if cords is not None:
