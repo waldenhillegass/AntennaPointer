@@ -1,6 +1,7 @@
 import board
 import neopixel
 import atexit
+import time
 
 # This class controls the 8x8 matrix of LED that displays how to move
 # the antenna. It holds the neoPixel object and maps error to the matrix
@@ -70,3 +71,13 @@ class Matrix:
          self.pixels[0] = (50, 0, 0)
       else:
          self.pixels[0] = (0, 0, 0)
+   
+   def strobeRed(self):
+      self.toggleStatusIndicator()
+      time.sleep(.1)
+      self.toggleStatusIndicator()
+      time.sleep(.1)
+      self.toggleStatusIndicator()
+      time.sleep(.1)
+      self.toggleStatusIndicator()
+
