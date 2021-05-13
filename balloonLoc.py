@@ -11,11 +11,10 @@ def authenticate():
       json = usrPass, 
       headers={'Content-Type': 'application/json'}
    )
+   print("auth:")
    print(r)
    if r.status_code != 200:
       return None
-
-
    return r.content.decode('utf-8') # return the token
 
 def getJson(token):
@@ -42,8 +41,8 @@ def get_balloon_gps(token):
 
 
 
-#tok = authenticate()
-#getLocation(tok)
+tok = authenticate()
+getLocation(tok)
 
 
 
