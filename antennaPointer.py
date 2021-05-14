@@ -55,7 +55,7 @@ def main():
       sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
 
       
-      dx = 0 - imu.getHeading()
+      dx = sweepElv[0] - imu.getHeading()
       dy = sweepElv[1] - imu.getPitch()
       dx *= -1
 
@@ -97,10 +97,5 @@ def calibrate(imu, matrix):
       if quad == 2:
          if imu.getYaw() < 90:
             complete = True
-   
-      
-      
-
-
 main()
    # Must be in degrees and elev in meters

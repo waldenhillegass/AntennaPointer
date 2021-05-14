@@ -2,6 +2,8 @@ import requests
 import time
 import os
 
+PAPA_ID = "AQUILA01"
+
 def authenticate():
    usrPass = {
      "Username": os.getenv('API_USER'),
@@ -28,10 +30,22 @@ def getJson(token):
    )
    resp = r.json()
    print(resp)
+   return resp
 
 def get_balloon_gps(token):
    try:
-      getJson(token)
-      return 35.3025, -120.6974, 471
-   except Exception:
+      js = getJson(token)
+      innerPayload = js[PAPA_ID][PAPA_ID][0]["innerPayload"]
+      innerPayload = innerPayload.split(",")
+      lat = float(innerPayload[7])
+      lon = float(innerPayload[8])
+      alt = float(innerPayload[3])
+
+      return lat, lon, alt
+   except Exception as e:
       return None
+      
+   
+
+tok = authenticate()
+get_balloon_gps(tok)
