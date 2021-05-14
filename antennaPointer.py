@@ -35,23 +35,26 @@ def main():
    calibrate(imu, matrix)
    matrix.clear()
    lastUpdated = 0
+   tPosLat = None
    while(True):
+      
       if (time.time() - lastUpdated > UPDATE_INTERVAL):
-         matrix.toggleStatusIndicator()
-         cords = get_balloon_gps(authTok)
-         if cords is not None:
-            tPosLat, tPosLong, tPosElv = cords
-         else:
-            matrix.strobeRed()
-         lastUpdated = time.time()
-         matrix.toggleStatusIndicator()
+         while(tPosLat is None):
+            matrix.toggleStatusIndicator()
+            cords = get_balloon_gps(authTok)
+            if cords is not None:
+               tPosLat, tPosLong, tPosElv = cords
+            else:
+               matrix.strobeRed()
+            lastUpdated = time.time()
+            matrix.toggleStatusIndicator()
 
       imu.printStatus()
 
       gps.readGPS()
       print(gps)
 
-
+      print(f'Target lat: {tPosLat}, {tPosLong}, {tPosElv}')
       sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
 
       
