@@ -56,7 +56,7 @@ def main():
 
       print(f'Target long: {tPosLong}, lat: {tPosLat}, alt: {tPosElv}')
       sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
-
+      print(sweepElv)
       
       dx = sweepElv[0] - imu.getHeading()
       dy = sweepElv[1] - imu.getPitch()
