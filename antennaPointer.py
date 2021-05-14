@@ -54,7 +54,7 @@ def main():
       gps.readGPS()
       print(gps)
 
-      print(f'Target lat: {tPosLat}, {tPosLong}, {tPosElv}')
+      print(f'Target long: {tPosLong}, lat: {tPosLatg}, alt: {tPosElv}')
       sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
 
       
