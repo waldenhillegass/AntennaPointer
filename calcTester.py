@@ -4,15 +4,15 @@ import numpy
 # this is a driver script to test the calculations that relate the cordinates to each other
 
 def main():
-   myPosLat = 35.29975
-   myPosLong = -120.6761616
-   myPosElv = 95.0
+   lam = 20
+   phi = 30
 
-   tPosLat = 35.3025
-   tPosLong = -120.6974
-   tPosElv = 471
+   x = 20
+   y = 20
+   z = 45
+   print(tiltCorrectCalcs(lam, phi, x,y,z))
 
-   print(calcAngles(myPosLat, myPosLong, myPosElv, tPosLat, tPosLong, tPosElv))
+   
 
 
 main()

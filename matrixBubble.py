@@ -1,6 +1,7 @@
 import board
 import neopixel
 import atexit
+import time
 
 # This class controls the 8x8 matrix of LED that displays how to move
 # the antenna. It holds the neoPixel object and maps error to the matrix
@@ -14,7 +15,7 @@ class Matrix:
       self.scale = scale
       atexit.register(self.clear)
    
-   def updateFromErrors(self, dx, dy):
+   def updateFromErrors(self, dx, dy, calibrateMode = False):
       graph = [ [False]*8 for i in range(8)]
       x = round((dx / self.scale * 3) + 3)
       x = max(0, min(6, x))
@@ -24,6 +25,12 @@ class Matrix:
 
       print(f'X: {x}')
       print(f'Y: {y}')
+
+      if (calibrateMode):
+         graph[0][0] = True
+         graph[0][7] = True
+         graph[7][0] = True
+         graph[7][7] = True
 
 
       graph[x][y] = True
@@ -42,25 +49,35 @@ class Matrix:
             x = 0
          if matrix[x][y]:
             if (x == 3 or x == 4) and (y == 3 or y == 4):
-               self.pixels[i] = (0, 50, 0)
+               self.pixels[i] = (0, 100, 0)
             else:
-               self.pixels[i] = (50, 0, 0)
+               self.pixels[i] = (100, 0, 0)
          else:
             if (x == 3 or x == 4) and (y == 3 or y == 4):
-               self.pixels[i] = (5, 5, 0)
+               self.pixels[i] = (10, 10, 0)
             else: 
                self.pixels[i] = (0, 0, 0)
          x += 1
-      self.pixels[0] = (0, 0, 25)
+      self.pixels[0] = (0, 0, 50)
       self.pixels.show()
 
    def clear(self):
       self.pixels.fill((0,0,0))
       self.pixels.show()
 
-   def toggleGpsIndicator(self):
+   def toggleStatusIndicator(self):
       self.gpsLight = not self.gpsLight
       if(self.gpsLight):
          self.pixels[0] = (50, 0, 0)
       else:
          self.pixels[0] = (0, 0, 0)
+   
+   def strobeRed(self):
+      self.toggleStatusIndicator()
+      time.sleep(.1)
+      self.toggleStatusIndicator()
+      time.sleep(.1)
+      self.toggleStatusIndicator()
+      time.sleep(.1)
+      self.toggleStatusIndicator()
+

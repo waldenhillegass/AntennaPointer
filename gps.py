@@ -54,7 +54,12 @@ class GPS:
 
       except Exception as e:
          self.ser.close()
-         self.ser = self.set_up_gps()
+         try:
+            self.ser = self.set_up_gps()
+         except Exception as e:
+            print("SUPER GPS READ ERROR")
+            print(e)
+            
          print(e)
          print("GPS READ ERROR")
          return False
