@@ -13,12 +13,43 @@ from balloonLoc import *
 
 UPDATE_INTERVAL = 60
 
+# tPosLat = 35.3025
+# tPosLong = -120.6974
+# tPosElv = 471
+
+# Read data from serial
+def get_balloon_gps():
+   payload = ser.readline()
+    prstrip = payload.rstrip().decode('utf8')
+    if len(prstrip) > 0:
+      print(prstrip)
+      try:
+        p = json.loads(prstrip)
+      except:
+         print(prstrip)
+         print("Invalid Packet")
+   return p['latitude'], p['longitude'], p['altitude']
+
 def main():
    imu = IMU()
    gps = GPS()
 
    scale = 20
    matrix = Matrix(scale)
+
+scale = int(input("Enter scale: "))
+matrix = Matrix(scale)
+
+
+while(True):
+   imu.printStatus()
+
+   gps.readGPS()
+   print(gps)
+
+   tPosLat, tPosLong, tPosElv = get_balloon_gps() 
+
+   sweepElv = calcAngles(gps.getLatitude(), gps.getLongitude(), gps.elevation, tPosLat, tPosLong, tPosElv)
 
    authTok = None
    matrix.toggleStatusIndicator()

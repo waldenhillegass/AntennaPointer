@@ -14,7 +14,6 @@ class IMU:
       self.lastPitch = 0
       self.lastRoll = 0
 
-
    def printStatus(self):
       print("Magnetometer (microteslas): {}".format(self.sensor.magnetic))
       print("Euler angle: {}".format(self.sensor.euler))
@@ -88,5 +87,4 @@ class IMU:
       z = self.sensor.magnetic[2]
 
       return tiltCorrectCalcs(lam, phi, x,y,z)
-      
       
